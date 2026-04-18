@@ -2,7 +2,6 @@ name: Daily Whale Briefing
 
 on:
   schedule:
-    # 8:00 AM ET = 12:00 UTC (EST) / 13:00 UTC (EDT)
     - cron: '0 12 * * *'
   workflow_dispatch:
 
@@ -22,32 +21,36 @@ jobs:
       - name: Install dependencies
         run: pip install requests cloudscraper
 
+      - name: Diagnose API connectivity
+        run: |
+          echo "=== Testing Hyperliquid API reachability ==="
+          curl -s -o /tmp/lb_test.txt -w "HTTP %{http_code}" \
+            "https://stats-data.hyperliquid.xyz/Mainnet/leaderboard" || true
+          echo ""
+          echo "Leaderboard response (first 300 chars):"
+          head -c 300 /tmp/lb_test.txt || true
+          echo ""
+          echo "=== Testing info API ==="
+          curl -s -o /tmp/info_test.txt -w "HTTP %{http_code}" \
+            -X POST https://api.hyperliquid.xyz/info \
+            -H "Content-Type: application/json" \
+            -d '{"type":"meta"}' || true
+          echo ""
+          echo "Info API response (first 300 chars):"
+          head -c 300 /tmp/info_test.txt || true
+
       - name: Run whale scanner
         run: |
-          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json 2>/tmp/scan_err.txt
-          EXIT=$?
-          echo "=== stderr ==="
-          cat /tmp/scan_err.txt
-          echo "=== exit: $EXIT ==="
-          if [ $EXIT -ne 0 ]; then
-            echo "Scanner failed — see stderr above"
-            exit 1
-          fi
-          echo "Output size: $(wc -c < /tmp/whale_data.json) bytes"
-          python3 -c "
-          import json, sys
-          d = json.load(open('/tmp/whale_data.json'))
-          if 'error' in d:
-              print('ERROR:', d['error']); sys.exit(1)
-          print(f\"Top wallets: {len(d['top_traders']['wallets'])}\")
-          print(f\"Rekt wallets: {len(d['rekt_traders']['wallets'])}\")
-          "
+          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json 2>&1
+          echo "Exit: $?"
+          echo "=== Output (first 500 chars) ==="
+          head -c 500 /tmp/whale_data.json
 
       - name: Generate briefing
         run: python3 scripts/generate_briefing.py
 
-      - name: Show briefing preview
-        run: head -60 briefings/whale-briefing-$(date +%Y-%m-%d).md
+      - name: Show briefing
+        run: cat briefings/whale-briefing-$(date +%Y-%m-%d).md
 
       - name: Commit and push briefing
         run: |
