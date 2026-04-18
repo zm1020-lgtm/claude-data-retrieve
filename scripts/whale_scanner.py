@@ -22,7 +22,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 HL_INFO = "https://api.hyperliquid.xyz/info"
 HL_LEADERBOARD = "https://stats-data.hyperliquid.xyz/Mainnet/leaderboard"
 
-# Mimic a real browser so Cloudflare / IP-allowlist checks pass
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -35,8 +34,16 @@ HEADERS = {
     "Referer": "https://app.hyperliquid.xyz/",
 }
 
-SESSION = requests.Session()
-SESSION.headers.update(HEADERS)
+# Use cloudscraper when available — handles Cloudflare JS challenges on cloud IPs
+try:
+    import cloudscraper
+    SESSION = cloudscraper.create_scraper(browser={"browser": "chrome", "platform": "windows", "mobile": False})
+    SESSION.headers.update(HEADERS)
+    print("Using cloudscraper session", file=sys.stderr)
+except ImportError:
+    SESSION = requests.Session()
+    SESSION.headers.update(HEADERS)
+    print("cloudscraper not installed, using requests", file=sys.stderr)
 
 
 def parse_performances(window_performances):
@@ -63,16 +70,15 @@ def get_leaderboard():
                 return data
             return []
         except requests.HTTPError as e:
-            if e.response.status_code == 403:
-                raise RuntimeError(
-                    f"Leaderboard API returned 403. "
-                    f"This usually means the server's IP is blocked by Hyperliquid. "
-                    f"Run this script locally or via GitHub Actions."
-                ) from e
+            code = e.response.status_code
+            print(f"Attempt {attempt+1}: HTTP {code} from leaderboard", file=sys.stderr)
             if attempt < 2:
                 time.sleep(2 ** attempt)
                 continue
-            raise
+            raise RuntimeError(
+                f"Leaderboard API returned {code} after 3 attempts. "
+                f"Body: {e.response.text[:200]}"
+            ) from e
     return []
 
 

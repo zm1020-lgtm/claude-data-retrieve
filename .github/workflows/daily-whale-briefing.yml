@@ -4,7 +4,7 @@ on:
   schedule:
     # 8:00 AM ET = 12:00 UTC (EST) / 13:00 UTC (EDT)
     - cron: '0 12 * * *'
-  workflow_dispatch:  # manual trigger from GitHub UI → Actions tab → Run workflow
+  workflow_dispatch:
 
 jobs:
   scan-and-brief:
@@ -20,15 +20,25 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests cloudscraper
 
       - name: Run whale scanner
         run: |
-          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json
-          echo "Scan complete. Output: $(wc -c < /tmp/whale_data.json) bytes"
+          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json 2>/tmp/scan_err.txt
+          EXIT=$?
+          echo "=== stderr ==="
+          cat /tmp/scan_err.txt
+          echo "=== exit: $EXIT ==="
+          if [ $EXIT -ne 0 ]; then
+            echo "Scanner failed — see stderr above"
+            exit 1
+          fi
+          echo "Output size: $(wc -c < /tmp/whale_data.json) bytes"
           python3 -c "
-          import json
+          import json, sys
           d = json.load(open('/tmp/whale_data.json'))
+          if 'error' in d:
+              print('ERROR:', d['error']); sys.exit(1)
           print(f\"Top wallets: {len(d['top_traders']['wallets'])}\")
           print(f\"Rekt wallets: {len(d['rekt_traders']['wallets'])}\")
           "
@@ -37,7 +47,7 @@ jobs:
         run: python3 scripts/generate_briefing.py
 
       - name: Show briefing preview
-        run: head -40 briefings/whale-briefing-$(date +%Y-%m-%d).md
+        run: head -60 briefings/whale-briefing-$(date +%Y-%m-%d).md
 
       - name: Commit and push briefing
         run: |
@@ -50,8 +60,6 @@ jobs:
           git push origin main
 
       - name: Send email
-        # To enable: set repo variable SEND_EMAIL=true and secrets MAIL_USERNAME,
-        # MAIL_PASSWORD (Gmail app password), MAIL_TO
         if: vars.SEND_EMAIL == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
