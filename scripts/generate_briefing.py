@@ -41,16 +41,19 @@ def build_coin_map(wallets):
                 entries.setdefault(c, []).append(float(pos.get("entry_price", 0)))
             else:
                 shorts[c] = shorts.get(c, 0) + 1
+                entries.setdefault(c, []).append(float(pos.get("entry_price", 0)))
     all_coins = set(list(longs) + list(shorts))
     result = {}
     for c in all_coins:
         l, s = longs.get(c, 0), shorts.get(c, 0)
         t = l + s
+        e_list = entries.get(c, [])
+        avg_e = round(sum(e_list) / len(e_list), 2) if e_list else 0
         result[c] = {
             "longs": l, "shorts": s, "total": t,
             "long_pct": round(l / t * 100) if t else 0,
             "short_pct": round(s / t * 100) if t else 0,
-            "avg_entry": round(sum(entries.get(c, [0])) / len(entries.get(c, [1])), 2),
+            "avg_entry": avg_e,
         }
     return result
 
@@ -154,9 +157,11 @@ def generate(data):
             sl = round(entry * (1 + sl_pct), 4)
             tp = round(entry * (1 - tp_pct), 4)
         # Position size: risk 2% of $1000 = $20 per trade, stop distance in %
+        if entry <= 0:
+            return 0, 0, 0, 0
         risk_dollars = 20
         position_size_pct = round((risk_dollars / (entry * sl_pct)) / 10 * 100, 1)
-        position_size_pct = min(position_size_pct, 20)  # cap at 20% of account
+        position_size_pct = min(position_size_pct, 20)
         return entry, sl, tp, position_size_pct
 
     # ── Format currency ──
