@@ -41,10 +41,18 @@ jobs:
 
       - name: Run whale scanner
         run: |
-          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json 2>&1
-          echo "Exit: $?"
-          echo "=== Output (first 500 chars) ==="
-          head -c 500 /tmp/whale_data.json
+          set +e
+          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json 2> /tmp/scanner.log
+          EXIT=$?
+          echo "=== Scanner stderr log ==="
+          cat /tmp/scanner.log
+          echo "=== Exit code: $EXIT ==="
+          echo "=== JSON size: $(wc -c < /tmp/whale_data.json) bytes ==="
+          echo "=== First 200 chars of JSON (should start with '{') ==="
+          head -c 200 /tmp/whale_data.json
+          echo ""
+          if [ $EXIT -ne 0 ]; then exit 1; fi
+          python3 -c "import json; d = json.load(open('/tmp/whale_data.json')); print(f\"Top wallets: {len(d['top_traders']['wallets'])}, Rekt wallets: {len(d['rekt_traders']['wallets'])}\")"
 
       - name: Generate briefing
         run: python3 scripts/generate_briefing.py
