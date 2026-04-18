@@ -216,11 +216,16 @@ def generate(data):
     lines.append("## 📊 Full Coin Breakdown")
     lines.append("| Coin | Smart Long% | Smart Short% | Rekt Long% | Rekt Short% | Signal |")
     lines.append("|------|-------------|--------------|------------|-------------|--------|")
+    EMPTY = {"long_pct": 50, "short_pct": 50, "total": 0, "longs": 0, "shorts": 0}
     for c in all_coins:
-        t = top_map.get(c, {"long_pct": "-", "short_pct": "-", "total": 0})
-        r = rekt_map.get(c, {"long_pct": "-", "short_pct": "-", "total": 0})
-        sig = coin_signal(t, r) if isinstance(t.get("long_pct"), int) else "-"
-        lines.append(f"| {c} | {t.get('long_pct','—')}% | {t.get('short_pct','—')}% | {r.get('long_pct','—')}% | {r.get('short_pct','—')}% | {sig} |")
+        t = top_map.get(c, EMPTY)
+        r = rekt_map.get(c, EMPTY)
+        sig = coin_signal(t, r) if isinstance(t.get("long_pct"), int) and isinstance(r.get("long_pct"), int) else "-"
+        tl = f"{t['long_pct']}%" if t.get("total", 0) > 0 else "—"
+        ts_ = f"{t['short_pct']}%" if t.get("total", 0) > 0 else "—"
+        rl = f"{r['long_pct']}%" if r.get("total", 0) > 0 else "—"
+        rs_ = f"{r['short_pct']}%" if r.get("total", 0) > 0 else "—"
+        lines.append(f"| {c} | {tl} | {ts_} | {rl} | {rs_} | {sig} |")
     lines.append("\n_Sorted by total trader count (smart + rekt combined)_\n")
 
     # Best trade setup
