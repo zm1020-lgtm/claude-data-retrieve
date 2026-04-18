@@ -59,6 +59,10 @@ def build_coin_map(wallets):
 
 
 def signal(long_pct):
+    try:
+        long_pct = int(long_pct)
+    except (TypeError, ValueError):
+        return "MIXED"
     if long_pct >= 65:
         return "BULLISH"
     if long_pct <= 35:
