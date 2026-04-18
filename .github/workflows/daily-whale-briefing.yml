@@ -1,0 +1,67 @@
+name: Daily Whale Briefing
+
+on:
+  schedule:
+    # 8:00 AM ET = 12:00 UTC (EST) / 13:00 UTC (EDT)
+    - cron: '0 12 * * *'
+  workflow_dispatch:  # manual trigger from GitHub UI → Actions tab → Run workflow
+
+jobs:
+  scan-and-brief:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run whale scanner
+        run: |
+          python3 scripts/whale_scanner.py both 50 > /tmp/whale_data.json
+          echo "Scan complete. Output: $(wc -c < /tmp/whale_data.json) bytes"
+          python3 -c "
+          import json
+          d = json.load(open('/tmp/whale_data.json'))
+          print(f\"Top wallets: {len(d['top_traders']['wallets'])}\")
+          print(f\"Rekt wallets: {len(d['rekt_traders']['wallets'])}\")
+          "
+
+      - name: Generate briefing
+        run: python3 scripts/generate_briefing.py
+
+      - name: Show briefing preview
+        run: head -40 briefings/whale-briefing-$(date +%Y-%m-%d).md
+
+      - name: Commit and push briefing
+        run: |
+          git config user.email "whale-bot@github-actions"
+          git config user.name "Whale Briefing Bot"
+          DATE=$(date +%Y-%m-%d)
+          git add briefings/
+          git diff --staged --quiet && echo "No changes to commit." || \
+            git commit -m "Daily whale briefing $DATE [automated]"
+          git push origin main
+
+      - name: Send email
+        # To enable: set repo variable SEND_EMAIL=true and secrets MAIL_USERNAME,
+        # MAIL_PASSWORD (Gmail app password), MAIL_TO
+        if: vars.SEND_EMAIL == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          secure: false
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "🐋 Hyperliquid Whale Briefing — ${{ env.DATE }}"
+          to: ${{ secrets.MAIL_TO }}
+          from: "Whale Bot <${{ secrets.MAIL_USERNAME }}>"
+          body: file://briefings/whale-briefing-${{ env.DATE }}.md
+          content_type: text/plain

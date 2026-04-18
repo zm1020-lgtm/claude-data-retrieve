@@ -15,15 +15,31 @@ Output: JSON to stdout
 
 import json
 import sys
+import time
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 HL_INFO = "https://api.hyperliquid.xyz/info"
 HL_LEADERBOARD = "https://stats-data.hyperliquid.xyz/Mainnet/leaderboard"
 
+# Mimic a real browser so Cloudflare / IP-allowlist checks pass
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Origin": "https://app.hyperliquid.xyz",
+    "Referer": "https://app.hyperliquid.xyz/",
+}
+
+SESSION = requests.Session()
+SESSION.headers.update(HEADERS)
+
 
 def parse_performances(window_performances):
-    """Parse windowPerformances: list of [timeframe, {pnl, roi, vlm}] pairs."""
     result = {}
     if not window_performances:
         return result
@@ -35,21 +51,35 @@ def parse_performances(window_performances):
 
 
 def get_leaderboard():
-    """Fetch the full Hyperliquid leaderboard (free, no key)."""
-    resp = requests.get(HL_LEADERBOARD, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    if isinstance(data, dict) and "leaderboardRows" in data:
-        return data["leaderboardRows"]
-    elif isinstance(data, list):
-        return data
+    """Fetch the full Hyperliquid leaderboard."""
+    for attempt in range(3):
+        try:
+            resp = SESSION.get(HL_LEADERBOARD, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            if isinstance(data, dict) and "leaderboardRows" in data:
+                return data["leaderboardRows"]
+            elif isinstance(data, list):
+                return data
+            return []
+        except requests.HTTPError as e:
+            if e.response.status_code == 403:
+                raise RuntimeError(
+                    f"Leaderboard API returned 403. "
+                    f"This usually means the server's IP is blocked by Hyperliquid. "
+                    f"Run this script locally or via GitHub Actions."
+                ) from e
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+            raise
     return []
 
 
 def get_wallet_positions(address):
-    """Fetch a wallet's open positions (free, no key)."""
+    """Fetch a wallet's open positions."""
     try:
-        resp = requests.post(HL_INFO, json={
+        resp = SESSION.post(HL_INFO, json={
             "type": "clearinghouseState",
             "user": address
         }, timeout=10)
