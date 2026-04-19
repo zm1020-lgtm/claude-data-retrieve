@@ -1,74 +1,250 @@
 # 🐋 Hyperliquid Whale Briefing — 2026-04-19
-_Generated at 8:00 AM ET | Top 50 + Rekt 50 wallets scanned_
-
-> **Data note:** Direct Hyperliquid leaderboard API (`stats-data.hyperliquid.xyz`) and info API
-> (`api.hyperliquid.xyz`) both return HTTP 403 from this server's datacenter IP — IP-level
-> allowlist enforced by Hyperliquid. Intelligence below is sourced from public news wires,
-> on-chain aggregators (CoinGlass, CoinAnk, WEEX), and whale-tracking reports published in
-> the last 48 hours. Signal direction and trader counts are estimated from corroborated news
-> data, not a live 50-wallet API pull.
->
-> **Market prices (April 19, 2026):** BTC $75,828 | ETH $2,362 | SOL $88.16 | HYPE $43.27
-
----
+_Generated at 14:25 UTC | Top 50 + Rekt 50 wallets scanned_
 
 ## 🎯 BTC/USD
-- Smart money: ~18 long, ~32 short (36% bullish)
-- Rekt money: ~25 long, ~25 short (50% bullish)
-- Signal: **BEARISH** — The most-watched Hyperliquid whale flipped a $1B BTC long to short this week; a second whale placed an $80M BTC short (7x leverage, entry ~$68,760, liq $80,083); smart money is net short BTC while rekt money remains mixed. Caveat: $594M in BTC shorts were liquidated in the past 24h as BTC rebounded to $78K on Iran ceasefire news before settling at $75,828 — short squeeze risk elevated.
-- Avg entry (top traders): ~$72,500 (estimated blended short entry; recent longs entered ~$68K–$74K range)
+- Smart money: 16 long, 15 short (52% bullish)
+- Rekt money: 7 long, 24 short (23% bullish)
+- Signal: **MIXED** — Cross-group divergence of 29pp; smart money leads direction.
+- Avg entry (top traders): $75,591.58
 
 ## 🎯 ETH/USD
-- Smart money: ~35 long, ~15 short (70% bullish)
-- Rekt money: ~28 long, ~22 short (56% bullish)
-- Signal: **BULLISH** — Strongest directional consensus among top traders. White Whale is long ETH across 4 wallets and claimed #1 leaderboard spot with ~$30M monthly gains. "Buddy" holds top-2 ETH long ($1.59M unrealized profit). A separate whale opened a 40,000 ETH long. Rekt money also long but underwater: wallet 0xa5b0..41 holds 15x ETH long at $2,148.7 with -$8.6M unrealized loss.
-- Avg entry (top traders): ~$2,149 (Machi/BTC OG range; White Whale entered lower)
+- Smart money: 20 long, 11 short (65% bullish)
+- Rekt money: 6 long, 19 short (24% bullish)
+- Signal: **BULLISH** — Smart money 65% long vs rekt 24% long — 41pp divergence confirms directional edge.
+- Avg entry (top traders): $2,334.48
 
 ## 🎯 SOL/USD
-- Smart money: ~38 long, ~12 short (76% bullish)
-- Rekt money: ~22 long, ~28 short (44% bullish)
-- Signal: **BULLISH** — Second-strongest smart money conviction. White Whale holds 745,000 SOL (~$65M at spot); BTC OG whale added $27M SOL long, bringing total multi-asset position to $742M. Rekt money is neutral-to-short SOL — a 32-point divergence vs smart money, the widest gap across major coins.
-- Avg entry (top traders): ~$82–$85 (estimated from position open timing mid-April)
+- Smart money: 7 long, 15 short (32% bullish)
+- Rekt money: 5 long, 4 short (56% bullish)
+- Signal: **BEARISH** — Smart money 68% short vs rekt 56% long — 24pp divergence; classic fade setup.
+- Avg entry (top traders): $86.7400
 
 ## ⚡ Top Contrarian Signal
-**SOL — BULLISH (smart money vs. rekt money divergence: +32 points)**
-Smart money (top leaderboard traders) is 76% long SOL while rekt money is only 44% long — the largest bull/bear divergence of any major coin. When the best traders are loading and the worst are fading or shorting, historical Hyperliquid data favors following the smart money. White Whale and the BTC OG whale are both actively sizing up. Confidence in the directional edge: moderate-high.
+
+**XRP — SHORT bias, 42pp confidence gap (widest in scan)**
+
+Smart money is 42% short on XRP (8L / 11S) while rekt traders are 0% long (0L / 4S). A 42pp gap is the largest divergence in today's scan. Follow smart money: **SHORT**.
 
 ## 📊 Full Coin Breakdown
 | Coin | Smart Long% | Smart Short% | Rekt Long% | Rekt Short% | Signal |
 |------|-------------|--------------|------------|-------------|--------|
-| ETH  | 70%         | 30%          | 56%        | 44%         | 🟢 BULLISH |
-| SOL  | 76%         | 24%          | 44%        | 56%         | 🟢 BULLISH (contrarian) |
-| BTC  | 36%         | 64%          | 50%        | 50%         | 🔴 BEARISH |
-| HYPE | 65%         | 35%          | 40%        | 60%         | 🟢 BULLISH |
-| XRP  | 38%         | 62%          | 52%        | 48%         | 🔴 BEARISH |
-| FARTCOIN | 28%    | 72%          | 60%        | 40%         | 🔴 BEARISH |
+| BTC | 52% | 48% | 23% | 77% | MIXED |
+| ETH | 65% | 35% | 24% | 76% | BULLISH (smart fade) |
+| HYPE | 55% | 45% | 25% | 75% | MIXED |
+| SOL | 32% | 68% | 56% | 44% | BEARISH (smart lead) |
+| ZEC | 21% | 79% | 43% | 57% | BEARISH (smart lead) |
+| XRP | 42% | 58% | 0% | 100% | MIXED |
+| FARTCOIN | 38% | 62% | 40% | 60% | MIXED (consensus) |
+| MON | 36% | 64% | 33% | 67% | MIXED |
+| PUMP | 43% | 57% | 50% | 50% | MIXED (consensus) |
+| XPL | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| LIT | 18% | 82% | 14% | 86% | BEARISH (consensus) |
+| ENA | 45% | 55% | 17% | 83% | MIXED |
+| WLFI | 38% | 62% | 100% | 0% | MIXED |
+| DOGE | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| TAO | 31% | 69% | 0% | 100% | BEARISH (consensus) |
+| ASTER | 23% | 77% | 33% | 67% | BEARISH (consensus) |
+| ZRO | 50% | 50% | 67% | 33% | MIXED |
+| kPEPE | 27% | 73% | 25% | 75% | BEARISH (consensus) |
+| PENGU | 55% | 45% | 50% | 50% | MIXED (consensus) |
+| SUI | 54% | 46% | 0% | 100% | MIXED |
+| BNB | 50% | 50% | 33% | 67% | MIXED |
+| TRUMP | 69% | 31% | 0% | 100% | BULLISH (smart fade) |
+| AAVE | 33% | 67% | 20% | 80% | BEARISH (consensus) |
+| WLD | 22% | 78% | 40% | 60% | BEARISH (smart lead) |
+| WIF | 42% | 58% | 0% | 100% | MIXED |
+| AVAX | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| VVV | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| ADA | 30% | 70% | 33% | 67% | BEARISH (consensus) |
+| LTC | 36% | 64% | 100% | 0% | MIXED |
+| LINK | 40% | 60% | 33% | 67% | MIXED |
+| TIA | 67% | 33% | 33% | 67% | BULLISH (smart fade) |
+| NEAR | 27% | 73% | 0% | 100% | BEARISH (consensus) |
+| XMR | 67% | 33% | 67% | 33% | BULLISH (consensus) |
+| IP | 18% | 82% | 100% | 0% | BEARISH (smart fade) |
+| VIRTUAL | 44% | 56% | 50% | 50% | MIXED (consensus) |
+| CRV | 44% | 56% | 50% | 50% | MIXED (consensus) |
+| BERA | 50% | 50% | 100% | 0% | MIXED |
+| SEI | 62% | 38% | 67% | 33% | MIXED |
+| kBONK | 25% | 75% | 33% | 67% | BEARISH (consensus) |
+| SPX | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| POPCAT | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| PAXG | 55% | 45% | — | — | MIXED (consensus) |
+| UNI | 38% | 62% | 50% | 50% | MIXED (consensus) |
+| LINEA | 43% | 57% | 33% | 67% | MIXED |
+| MELANIA | 56% | 44% | 0% | 100% | MIXED |
+| AVNT | 67% | 33% | 100% | 0% | BULLISH (consensus) |
+| APT | 44% | 56% | 100% | 0% | MIXED |
+| MET | 29% | 71% | 50% | 50% | BEARISH (smart lead) |
+| BCH | 50% | 50% | 100% | 0% | MIXED |
+| FIL | 50% | 50% | 0% | 100% | MIXED |
+| LDO | 14% | 86% | 50% | 50% | BEARISH (smart lead) |
+| STBL | 43% | 57% | 50% | 50% | MIXED (consensus) |
+| JUP | 57% | 43% | 50% | 50% | MIXED (consensus) |
+| MORPHO | 50% | 50% | 100% | 0% | MIXED |
+| 2Z | 43% | 57% | 0% | 100% | MIXED |
+| AERO | 33% | 67% | 33% | 67% | BEARISH (consensus) |
+| ONDO | 29% | 71% | 0% | 100% | BEARISH (consensus) |
+| ARB | 86% | 14% | 50% | 50% | BULLISH (smart lead) |
+| MOODENG | 62% | 38% | 0% | 100% | MIXED |
+| POL | 33% | 67% | 67% | 33% | BEARISH (smart fade) |
+| PENDLE | 75% | 25% | 100% | 0% | BULLISH (consensus) |
+| GRASS | 62% | 38% | 0% | 100% | MIXED |
+| ALGO | 50% | 50% | 100% | 0% | MIXED |
+| PYTH | 57% | 43% | 0% | 100% | MIXED |
+| SYRUP | 0% | 100% | 33% | 67% | BEARISH (consensus) |
+| STABLE | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| STRK | 38% | 62% | — | — | MIXED (consensus) |
+| TON | 43% | 57% | 0% | 100% | MIXED |
+| PURR | 67% | 33% | 50% | 50% | BULLISH (smart lead) |
+| TRX | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| SNX | 43% | 57% | 0% | 100% | MIXED |
+| PROVE | 33% | 67% | 100% | 0% | BEARISH (smart fade) |
+| CC | 29% | 71% | 0% | 100% | BEARISH (consensus) |
+| ZK | 33% | 67% | 50% | 50% | BEARISH (smart lead) |
+| JTO | 43% | 57% | 100% | 0% | MIXED |
+| kSHIB | 50% | 50% | 0% | 100% | MIXED |
+| EIGEN | 57% | 43% | — | — | MIXED (consensus) |
+| STX | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| ETC | 67% | 33% | 100% | 0% | BULLISH (consensus) |
+| AXS | 43% | 57% | — | — | MIXED (consensus) |
+| CFX | 50% | 50% | 100% | 0% | MIXED |
+| BIO | 33% | 67% | 100% | 0% | BEARISH (smart fade) |
+| DOT | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| RESOLV | 33% | 67% | 0% | 100% | BEARISH (consensus) |
+| INJ | 43% | 57% | — | — | MIXED (consensus) |
+| ATOM | 67% | 33% | 0% | 100% | BULLISH (smart fade) |
+| RENDER | 50% | 50% | 100% | 0% | MIXED |
+| TST | 50% | 50% | 100% | 0% | MIXED |
+| ICP | 40% | 60% | 0% | 100% | MIXED |
+| BLAST | 60% | 40% | 50% | 50% | MIXED (consensus) |
+| XAI | 17% | 83% | 0% | 100% | BEARISH (consensus) |
+| SAND | 50% | 50% | 0% | 100% | MIXED |
+| IMX | 50% | 50% | 100% | 0% | MIXED |
+| REZ | 33% | 67% | 100% | 0% | BEARISH (smart fade) |
+| LAYER | 33% | 67% | — | — | BEARISH (smart lead) |
+| RUNE | 40% | 60% | 100% | 0% | MIXED |
+| OP | 80% | 20% | 0% | 100% | BULLISH (smart fade) |
+| GMT | 67% | 33% | — | — | BULLISH (smart lead) |
+| ARK | 20% | 80% | 0% | 100% | BEARISH (consensus) |
+| INIT | 40% | 60% | 0% | 100% | MIXED |
+| AIXBT | 33% | 67% | — | — | BEARISH (smart lead) |
+| USUAL | 33% | 67% | — | — | BEARISH (smart lead) |
+| kFLOKI | 40% | 60% | 0% | 100% | MIXED |
+| XLM | 33% | 67% | — | — | BEARISH (smart lead) |
+| DASH | 50% | 50% | — | — | MIXED (consensus) |
+| CHILLGUY | 80% | 20% | 0% | 100% | BULLISH (smart fade) |
+| 0G | 50% | 50% | — | — | MIXED (consensus) |
+| AZTEC | 20% | 80% | 0% | 100% | BEARISH (consensus) |
+| HEMI | 40% | 60% | 100% | 0% | MIXED |
+| PROMPT | 20% | 80% | 100% | 0% | BEARISH (smart fade) |
+| ENS | 40% | 60% | 100% | 0% | MIXED |
+| TURBO | 50% | 50% | — | — | MIXED (consensus) |
+| ORDI | 60% | 40% | 100% | 0% | MIXED |
+| ZEREBRO | 40% | 60% | 0% | 100% | MIXED |
+| ME | 50% | 50% | — | — | MIXED (consensus) |
+| SKY | 60% | 40% | 100% | 0% | MIXED |
+| KAITO | 67% | 33% | — | — | BULLISH (smart lead) |
+| PNUT | 50% | 50% | — | — | MIXED (consensus) |
+| ETHFI | 50% | 50% | — | — | MIXED (consensus) |
+| ZORA | 50% | 50% | — | — | MIXED (consensus) |
+| MNT | 20% | 80% | 0% | 100% | BEARISH (consensus) |
+| MOVE | 17% | 83% | — | — | BEARISH (smart lead) |
+| VINE | 50% | 50% | 0% | 100% | MIXED |
+| GALA | 80% | 20% | — | — | BULLISH (smart lead) |
+| PEOPLE | 60% | 40% | — | — | MIXED (consensus) |
+| W | 0% | 100% | — | — | BEARISH (smart lead) |
+| MINA | 40% | 60% | — | — | MIXED (consensus) |
+| UMA | 20% | 80% | — | — | BEARISH (smart lead) |
+| NIL | 40% | 60% | — | — | MIXED (consensus) |
+| FET | 40% | 60% | — | — | MIXED (consensus) |
+| MEW | 50% | 50% | 100% | 0% | MIXED |
+| YZY | 75% | 25% | 100% | 0% | BULLISH (consensus) |
+| DYM | 60% | 40% | — | — | MIXED (consensus) |
+| IO | 40% | 60% | — | — | MIXED (consensus) |
+| MEGA | 50% | 50% | 67% | 33% | MIXED |
+| ZEN | 80% | 20% | — | — | BULLISH (smart lead) |
+| SCR | 20% | 80% | — | — | BEARISH (smart lead) |
+| BOME | 20% | 80% | — | — | BEARISH (smart lead) |
+| YGG | 20% | 80% | — | — | BEARISH (smart lead) |
+| WCT | 20% | 80% | — | — | BEARISH (smart lead) |
+| SOPH | 40% | 60% | — | — | MIXED (consensus) |
+| DYDX | 20% | 80% | — | — | BEARISH (smart lead) |
+| GOAT | 75% | 25% | 0% | 100% | BULLISH (smart fade) |
+| BLUR | 80% | 20% | — | — | BULLISH (smart lead) |
+| BANANA | 40% | 60% | — | — | MIXED (consensus) |
+| ZETA | 40% | 60% | — | — | MIXED (consensus) |
+| AR | 40% | 60% | — | — | MIXED (consensus) |
+| S | 20% | 80% | — | — | BEARISH (smart lead) |
+| ALT | 40% | 60% | — | — | MIXED (consensus) |
+| TRB | 60% | 40% | — | — | MIXED (consensus) |
+| GRIFFAIN | 25% | 75% | 0% | 100% | BEARISH (consensus) |
+| COMP | 40% | 60% | — | — | MIXED (consensus) |
+| BABY | 40% | 60% | — | — | MIXED (consensus) |
+| ANIME | 40% | 60% | — | — | MIXED (consensus) |
+| APE | 40% | 60% | — | — | MIXED (consensus) |
+| HMSTR | 20% | 80% | — | — | BEARISH (smart lead) |
+| CAKE | 60% | 40% | — | — | MIXED (consensus) |
+| MEME | 60% | 40% | — | — | MIXED (consensus) |
+| SUSHI | 40% | 60% | — | — | MIXED (consensus) |
+| HBAR | 75% | 25% | 0% | 100% | BULLISH (smart fade) |
+| HYPER | 20% | 80% | — | — | BEARISH (smart lead) |
+| BRETT | 40% | 60% | — | — | MIXED (consensus) |
+| TNSR | 40% | 60% | — | — | MIXED (consensus) |
+| NOT | 25% | 75% | — | — | BEARISH (smart lead) |
+| MERL | 25% | 75% | — | — | BEARISH (smart lead) |
+| KAS | 25% | 75% | — | — | BEARISH (smart lead) |
+| FTT | 67% | 33% | 100% | 0% | BULLISH (consensus) |
+| DOOD | 25% | 75% | — | — | BEARISH (smart lead) |
+| GMX | 25% | 75% | — | — | BEARISH (smart lead) |
+| POLYX | 50% | 50% | — | — | MIXED (consensus) |
+| SKR | 25% | 75% | — | — | BEARISH (smart lead) |
+| SUPER | 25% | 75% | — | — | BEARISH (smart lead) |
+| ACE | 25% | 75% | — | — | BEARISH (smart lead) |
+| APEX | 67% | 33% | 0% | 100% | BULLISH (smart fade) |
+| kNEIRO | 25% | 75% | — | — | BEARISH (smart lead) |
+| MANTA | 25% | 75% | — | — | BEARISH (smart lead) |
+| kLUNC | 50% | 50% | — | — | MIXED (consensus) |
+| MAVIA | 0% | 100% | — | — | BEARISH (smart lead) |
+| FOGO | 50% | 50% | — | — | MIXED (consensus) |
+| CELO | 50% | 50% | — | — | MIXED (consensus) |
+| NEO | 25% | 75% | — | — | BEARISH (smart lead) |
+| SAGA | 0% | 100% | — | — | BEARISH (smart lead) |
+| BIGTIME | 33% | 67% | — | — | BEARISH (smart lead) |
+| IOTA | 67% | 33% | — | — | BULLISH (smart lead) |
+| USTC | 33% | 67% | — | — | BEARISH (smart lead) |
+| MAV | 33% | 67% | — | — | BEARISH (smart lead) |
+| GAS | 67% | 33% | — | — | BULLISH (smart lead) |
+| NXPC | 67% | 33% | — | — | BULLISH (smart lead) |
+| RSR | 33% | 67% | — | — | BEARISH (smart lead) |
+| BSV | 50% | 50% | — | — | MIXED (consensus) |
 
-_Sorted by estimated total trader count. HYPE/XRP/FARTCOIN estimates less data-certain than BTC/ETH/SOL._
+_Sorted by total trader count (smart + rekt combined)_
 
 ## 🏆 Highest-Conviction Trade Setup
-- **Token:** ETH
-- **Direction:** LONG
-- **Basis:** 70% smart money bullish consensus — the highest named-whale concentration of any asset. White Whale (current #1 leaderboard, $30M+ monthly PnL) is long across 4 wallets. "Buddy" is top-2 ETH bull with live unrealized profit. BTC OG whale includes ETH in $676M+ multi-asset long. Rekt money is also long but stuck at worse entries (~$2,148), meaning smart money entered at superior prices and has margin cushion. ETH also benefits from James Wynn's exit (was short → got liquidated), removing a major headwind.
-- **Confidence:** 7/10
+
+| Field | Value |
+|-------|-------|
+| **Token** | ETH/USD |
+| **Direction** | LONG |
+| **Entry** | $2,334.48 |
+| **Stop Loss** | $2,299.46 |
+| **Take Profit** | $2,404.51 |
+| **Position Size** | 5.7% of account (~$57 on $1,000) |
+| **Risk/Reward** | 1:2 |
+| **Confidence** | 9/10 |
+
+**Basis:** 31 smart-money wallets in ETH, 65% positioned long. Rekt traders 76% on the other side — a 41pp inversion. Risk 2% of account ($20 on $1,000). Only enter on a $2,334.48 retest; invalidate and cut if price closes through $2,299.46.
 
 ## 📋 Notable Wallets
-| Wallet | Account Value (est.) | Largest Open Position |
-|--------|---------------------|----------------------|
-| **White Whale** (4 wallets, #1 leaderboard) | ~$50M+ | Long 745,000 SOL + Long ETH — ~$30M monthly PnL |
-| **BTC OG / CZ Rival** (0x unknown) | ~$742M position value | Long SOL ($27M added), multi-asset long $742M total |
-| **"Buddy"** (0x unknown) | ~$15M est. | Long ETH, top-2 Hyperliquid ETH bull, +$1.59M unrealized |
-| **Machi Big Brother** (0xa5b0..41) | ~$99K account | Long ETH 15x @ $2,148.7 — -$8.6M unrealized, $2.58M position |
-| **James Wynn** (0x5078c2..) | ~$900 (wiped) | No active position — 6th liquidation April 6 on 40x BTC short |
+| Rank | Address | Account Value | Largest Position |
+|------|---------|--------------|-----------------|
+| 1 | `0x010461c14e146ac35fe42271bdc1134ee31c703a` | $114,076,959 | LONG BTC @ $73,983.90 |
+| 2 | `0x31ca8395cf837de08b24da3f660e77761dfb974b` | $114,037,291 | SHORT BTC @ $74,025.60 |
+| 3 | `0xfc667adba8d4837586078f4fdcdc29804337ca06` | $99,275,390 | SHORT HYPE @ $43.6879 |
+| 4 | `0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00` | $68,562,757 | LONG BTC @ $75,568.10 |
+| 5 | `0xff4cd3826ecee12acd4329aada4a2d3419fc463c` | $54,762,203 | SHORT SOL @ $86.4074 |
 
 ---
-
-## 🔍 Market Context
-- **24h liquidations (all exchanges):** $759M total — $594M shorts liquidated vs $165M longs. Shorts got decimated as BTC recovered to $78K on Iran ceasefire news (April 17), then pulled back to $75,828 on April 19.
-- **Hyperliquid aggregate whale L/S:** ~$3.5B total, 51% long / 49% short (ratio 1.02–1.05)
-- **Hyperliquid market share:** 44% of all decentralized perp DEX open interest (~$5.15B OI), up from rivals.
-- **Key event:** CFTC pledged to "onshore" Hyperliquid DEX markets (April 17) — regulatory tailwind for the platform.
-
----
-
-_Sources: The Block, CoinGlass, WEEX Crypto News, CoinDesk, BeInCrypto, Yahoo Finance, MEXC News, Mitrade, CryptoTimes, The Coin Republic. Data from 48h news window ending April 19 2026 08:00 ET._
+_Scan stats: Scanned 250 top wallets, found 50 with open positions | Scanned 250 worst-month wallets (>$1k), found 50 with open positions_
+_Smart positions: 1353 · Rekt positions: 303 · Coins tracked: 190_
